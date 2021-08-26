@@ -27,12 +27,12 @@ install-dependencies:
 unit-tests:
   stage: test
   script:
-    - npm run test
+    - npm run test:unit
 
 e2e-tests:
   stage: test
   script:
-    - npm run test
+    - npm run test:e2e
 
 # Build jobs
 build:
