@@ -1,5 +1,5 @@
 # Container image
-image: node:alpine
+image: andreysenov/node-gyp
 
 # Stages
 stages:
