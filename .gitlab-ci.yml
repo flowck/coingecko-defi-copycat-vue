@@ -30,6 +30,7 @@ unit-tests:
     - npm run test:unit
 
 e2e-tests:
+  image: cypress/base:14.16.0
   stage: test
   script:
     - npm run test:e2e
