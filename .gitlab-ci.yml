@@ -41,12 +41,14 @@ build:
     - npm run build
 
 # Release new version
-# release-new-version:
-#   stage: release
-#   script: npm run deploy:prod
-#   only:
-#     refs:
-#       - main
+create-release:
+  stage: release
+  variables:
+    GL_TOKEN: $GL_TOKEN
+  script: npx semantic-release
+  only:
+    refs:
+      - main
 
 # Deploy
 deploy-to-dev:
