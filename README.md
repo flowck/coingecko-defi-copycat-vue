@@ -1,34 +1,13 @@
-# coingecko-defi-copycat-vue
+# CoinGecko DeFI Copycat
 
-## Project setup
-```
-npm install
-```
+## Docs
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+- [Setup](./docs/setup.md)
+- [Requirements](./docs/setup.md)
+- [Architecture](./docs/setup.md)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Project features
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- CI
+- Commit lint
+- Semantic releases
