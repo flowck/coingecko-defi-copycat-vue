@@ -1,12 +1,9 @@
 <template>
-  <router-view />
+  <section>List coins per market</section>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
+
 export default defineComponent({});
 </script>
-
-<style lang="scss">
-@import "common/assets/styles/main.scss";
-</style>

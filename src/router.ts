@@ -1,11 +1,23 @@
-import Home from "@/common/views/Home.vue";
+import Dashboard from "@/common/views/Dashboard.vue";
+import DeFiCoins from "@/modules/defiCoins/defiCoinsRoutes";
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    redirect: "/de-fi",
+  },
+  {
+    path: "/de-fi",
+    name: "Dashboard",
+    component: Dashboard,
+    children: [...DeFiCoins],
+    redirect: "/de-fi/de-fi-coins",
+  },
+  // 404
+  {
+    redirect: "/",
+    path: "/:pathMatch(.*)*",
   },
 ];
 
