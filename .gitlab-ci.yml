@@ -25,7 +25,7 @@ variables:
 install-dependencies:
   stage: setup
   script:
-    - npm ci
+    - npm ci --prefer-offline
   artifacts:
     paths:
       - node_modules/
