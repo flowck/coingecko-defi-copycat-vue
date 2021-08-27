@@ -5,11 +5,12 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:ci": "npm run build; cp -R .vercel ./dist/",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint",
-    "deploy:dev": "vercel -t $VERCEL_TOKEN",
-    "deploy:prod": "vercel --prod -t $VERCEL_TOKEN"
+    "deploy:dev": "cd dist; vercel -t $VERCEL_TOKEN",
+    "deploy:prod": "cd dist; vercel --prod -t $VERCEL_TOKEN"
   },
   "dependencies": {
     "core-js": "^3.6.5",
