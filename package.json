@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e",
+    "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint",
     "deploy:dev": "vercel -t $VERCEL_TOKEN",
     "deploy:prod": "vercel --prod -t $VERCEL_TOKEN"
@@ -20,6 +20,9 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/gitlab": "^6.2.2",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
