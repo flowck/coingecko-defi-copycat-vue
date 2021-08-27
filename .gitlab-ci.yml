@@ -46,7 +46,7 @@ e2e-tests:
 build:
   stage: build
   script:
-    - npm run build
+    - npm run build:ci
 
 # Release new version
 create-release:
