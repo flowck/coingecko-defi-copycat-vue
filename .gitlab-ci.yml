@@ -95,27 +95,3 @@ create-release:
   only:
     refs:
       - main
-
-# Deploy
-deploy-to-dev:
-  dependencies: []
-  image: node:lts-alpine3.14
-  tags:
-    - changani
-  stage: deploy
-  script:
-    - npm run deploy:dev
-  only:
-    refs:
-      - develop
-
-deploy-to-prod:
-  image: node:lts-alpine3.14
-  tags:
-    - changani
-  stage: deploy
-  script:
-    - npm run deploy:prod
-  only:
-    refs:
-      - main
