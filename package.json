@@ -13,6 +13,7 @@
     "deploy:prod": "cd dist; vercel --prod -t $VERCEL_TOKEN"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
