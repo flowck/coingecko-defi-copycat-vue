@@ -9,6 +9,7 @@ stages:
 
 # Cache npm modules and cypress binary
 variables:
+  GITLAB_TOKEN: $GL_TOKEN
   npm_config_cache: "$CI_PROJECT_DIR/.npm"
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
@@ -69,8 +70,6 @@ create-release:
   tags:
     - changani
   stage: release
-  variables:
-    GITLAB_TOKEN: $GL_TOKEN
   before_script:
     - apk --no-cache add git
     - npm i @semantic-release/changelog @semantic-release/git @semantic-release/gitlab
