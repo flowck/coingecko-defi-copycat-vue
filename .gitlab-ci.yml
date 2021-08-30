@@ -14,7 +14,7 @@ variables:
 
 # Setup jobs
 install-dependencies:
-  image: andreysenov/node-gyp
+  image: node:lts-alpine3.14
   tags:
     - changani
   stage: setup
