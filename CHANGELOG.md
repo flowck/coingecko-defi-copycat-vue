@@ -1,3 +1,10 @@
+## [1.0.2](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/compare/v1.0.1...v1.0.2) (2021-08-30)
+
+
+### Bug Fixes
+
+* make it work ([47d53c8](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/commit/47d53c8a14e8fa2788f16c355a87a0710b2b97b4))
+
 ## [1.0.1](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/compare/v1.0.0...v1.0.1) (2021-08-30)
 
 
