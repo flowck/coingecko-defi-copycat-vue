@@ -73,6 +73,7 @@ create-release:
     GITLAB_TOKEN: $GL_TOKEN
   before_script:
     - apk --no-cache add git
+    - npm i @semantic-release/changelog @semantic-release/git @semantic-release/gitlab
   script: npx semantic-release
   only:
     refs:
