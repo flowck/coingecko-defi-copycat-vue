@@ -3,10 +3,7 @@
     <nav>
       <ul>
         <li>
-          <router-link to="#">DeFi coins</router-link>
-        </li>
-        <li>
-          <router-link to="#">Decentralized Exchange</router-link>
+          <router-link :to="{ name: 'ListDeFiCoins' }">DeFi coins</router-link>
         </li>
       </ul>
     </nav>
