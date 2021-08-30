@@ -2,18 +2,14 @@ import { Module } from "vuex";
 import { Coin } from "./coin";
 import { RootState } from "@/store";
 import { CoinsService } from "./coinsService";
+import { CoinsModuleState, HistoricalData } from "./interfaces";
 import { AppError } from "@/common/utils/appError";
-
-interface CoinsModuleState {
-  coins: Coin[];
-  vsCurrency: string;
-  error: AppError | null;
-}
 
 const coinsService = new CoinsService();
 
 const SET_ERROR = "SET_ERROR";
 const SET_COINS = "SET_COINS";
+const SET_COIN_HISTORICAL_DATA = "SET_COIN_HISTORICAL_DATA";
 export const COINS_MODULE = "coinsModule";
 
 export const coinsModule: Module<CoinsModuleState, RootState> = {
@@ -22,6 +18,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
     coins: [],
     error: null,
     vsCurrency: "USD",
+    historicalData: [],
   },
   actions: {
     async getDeFiCoinsByMarketCap({ commit, state }) {
@@ -36,6 +33,17 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
         commit(SET_ERROR, error);
       }
     },
+    async getCoinHistoricalData({ commit, state }, coinId: string) {
+      try {
+        const data = await coinsService.getCoinHistoricalData(
+          coinId,
+          state.vsCurrency
+        );
+        commit(SET_COIN_HISTORICAL_DATA, data);
+      } catch (error) {
+        commit(SET_ERROR, error);
+      }
+    },
   },
   getters: {
     vsCurrency: (state) => state.vsCurrency,
@@ -43,5 +51,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
   mutations: {
     [SET_ERROR]: (state, error: AppError) => (state.error = error),
     [SET_COINS]: (state, coins: Coin[]) => (state.coins = coins),
+    [SET_COIN_HISTORICAL_DATA]: (state, data: HistoricalData[]) =>
+      (state.historicalData = data),
   },
 };

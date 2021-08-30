@@ -1,7 +1,35 @@
+import { Coin } from "./coin";
+import { AppError } from "@/common/utils/appError";
+
+export interface CoinsModuleState {
+  coins: Coin[];
+  vsCurrency: string;
+  error: AppError | null;
+  historicalData: HistoricalData[];
+}
+
+export interface HistoricalData {
+  name: string;
+  data: number[][];
+}
+
 export interface CoinImage {
   thumb: string;
   small: string;
   large: string;
+}
+
+export interface GetCoinsByMarketCapParams {
+  page?: number;
+  perPage?: number;
+  category: string;
+  vsCurrency: string;
+}
+
+export interface CoinHistoricalDataResponse {
+  prices: number[][];
+  market_caps: number[][];
+  total_volumes: number[][];
 }
 
 export interface CoinResponse {
