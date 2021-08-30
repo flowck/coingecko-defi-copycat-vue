@@ -13,33 +13,33 @@ variables:
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 # Setup jobs
-install-dependencies:
-  image: andreysenov/node-gyp
-  tags:
-    - changani
-  stage: setup
-  script:
-    - npm ci --prefer-offline
-  # Cache node_modules
-  cache:
-    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
-    paths:
-      - node_modules/
-      # - .npm
-      # - cache/Cypress
-  # Only run npm ci if package-lock has changed
-  # only:
-  #   changes:
-  #     - package-lock.json
+# install-dependencies:
+#   image: andreysenov/node-gyp
+#   tags:
+#     - changani
+#   stage: setup
+#   script:
+#     - npm ci --prefer-offline
+#   # Cache node_modules
+#   cache:
+#     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+#     paths:
+#       - node_modules/
+# - .npm
+# - cache/Cypress
+# Only run npm ci if package-lock has changed
+# only:
+#   changes:
+#     - package-lock.json
 
 # Test jobs
-unit-tests:
-  image: node:lts-alpine3.14
-  tags:
-    - changani
-  stage: test
-  script:
-    - npm run test:unit
+# unit-tests:
+#   image: node:lts-alpine3.14
+#   tags:
+#     - changani
+#   stage: test
+#   script:
+#     - npm run test:unit
 
 # e2e-tests:
 #   image: cypress/base:14.16.0
@@ -48,20 +48,34 @@ unit-tests:
 #     - npm run test:e2e
 
 # Build jobs
-build:
+# build:
+#   image: andreysenov/node-gyp
+#   tags:
+#     - changani
+#   stage: build
+#   script:
+#     - npm run build
+#   artifacts:
+#     paths:
+#       - node_modules/
+#   cache:
+#     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+#     paths:
+#       - node_modules/
+
+# Release new version
+create-release:
+  dependencies: []
   image: andreysenov/node-gyp
   tags:
     - changani
-  stage: build
-  script:
-    - npm run build
-  artifacts:
-    paths:
-      - node_modules/
-  cache:
-    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
-    paths:
-      - node_modules/
+  stage: release
+  variables:
+    GL_TOKEN: $GL_TOKEN
+  script: npx semantic-release
+  only:
+    refs:
+      - main
 
 sonarqube-check:
   tags:
@@ -79,19 +93,3 @@ sonarqube-check:
   script:
     - sonar-scanner
   allow_failure: true
-  # only:
-  #  - master # or the name of your main branch
-
-# Release new version
-create-release:
-  dependencies: []
-  image: andreysenov/node-gyp
-  tags:
-    - changani
-  stage: release
-  variables:
-    GL_TOKEN: $GL_TOKEN
-  script: npx semantic-release
-  only:
-    refs:
-      - main
