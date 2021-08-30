@@ -10,7 +10,8 @@
     "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint",
     "deploy:dev": "cd dist; vercel -t $VERCEL_TOKEN",
-    "deploy:prod": "cd dist; vercel --prod -t $VERCEL_TOKEN"
+    "deploy:prod": "cd dist; vercel --prod -t $VERCEL_TOKEN",
+    "docker:build": "docker build -t cg-app-test ."
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -22,9 +23,6 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/gitlab": "^6.2.2",
     "@types/jest": "^24.0.19",
     "@typescript-eslint/eslint-plugin": "^4.18.0",
     "@typescript-eslint/parser": "^4.18.0",
@@ -51,6 +49,9 @@
     "vue-jest": "^5.0.0-0"
   },
   "optionalDependencies": {
-    "husky": "^7.0.2"
+    "husky": "^7.0.2",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/gitlab": "^6.2.2"
   }
 }

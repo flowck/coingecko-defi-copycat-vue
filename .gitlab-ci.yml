@@ -65,12 +65,14 @@ install-dependencies:
 
 # Release new version
 create-release:
-  image: node:14.17.5
+  image: node:lts-alpine3.14
   tags:
     - changani
   stage: release
   variables:
-    GL_TOKEN: $GL_TOKEN
+    GITLAB_TOKEN: $GL_TOKEN
+  before_script:
+    - apk --no-cache add git
   script: npx semantic-release
   only:
     refs:
