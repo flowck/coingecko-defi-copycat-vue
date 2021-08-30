@@ -1,8 +1,4 @@
 <template>
-  <aside>
-    <div></div>
-    <nav></nav>
-  </aside>
   <router-view />
 </template>
 
@@ -11,4 +7,6 @@ import { defineComponent } from "vue";
 export default defineComponent({});
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "common/assets/styles/main.scss";
+</style>
