@@ -14,20 +14,20 @@ variables:
   CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
 # Setup jobs
-install-dependencies:
-  image: node:lts-alpine3.14
-  tags:
-    - changani
-  stage: setup
-  script:
-    - npm ci --prefer-offline
-  # Cache node_modules
-  cache:
-    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
-    paths:
-      - node_modules/
-      # - .npm
-      # - cache/Cypress
+# install-dependencies:
+#   image: node:lts-alpine3.14
+#   tags:
+#     - changani
+#   stage: setup
+#   script:
+#     - npm ci --prefer-offline
+#   # Cache node_modules
+#   cache:
+#     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+#     paths:
+#       - node_modules/
+# - .npm
+# - cache/Cypress
 # Only run npm ci if package-lock has changed
 # only:
 #   changes:
