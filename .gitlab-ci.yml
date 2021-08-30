@@ -25,8 +25,8 @@ install-dependencies:
     key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
     paths:
       - node_modules/
-      - .npm
-      - cache/Cypress
+      # - .npm
+      # - cache/Cypress
 # Only run npm ci if package-lock has changed
 # only:
 #   changes:
@@ -65,7 +65,6 @@ install-dependencies:
 
 # Release new version
 create-release:
-  dependencies: []
   image: node:14.17.5
   tags:
     - changani
