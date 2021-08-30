@@ -1,7 +1,7 @@
 import coins from "../tests/fixtures/coins.json";
 
 const requestResponses: Record<string, unknown> = {
-  "/coins": coins,
+  "/coins/markets": coins,
 };
 
 export default {
