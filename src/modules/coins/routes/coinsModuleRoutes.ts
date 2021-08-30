@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import ListDeFiCoins from "./views/ListDeFiCoins.vue";
+import ListDeFiCoins from "@/modules/coins/views/ListDeFiCoins.vue";
 
 const routes: RouteRecordRaw[] = [
   {
@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     name: "ListDeFiCoins",
     component: ListDeFiCoins,
     meta: {
-      viewTitle: "Coins per Market",
+      viewTitle: "Top 100 DeFi Coins by Market Capitalization",
     },
   },
 ];

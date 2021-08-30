@@ -1,5 +1,5 @@
 import Dashboard from "@/common/views/Dashboard.vue";
-import DeFiCoins from "@/modules/defiCoins/defiCoinsRoutes";
+import DeFiCoins from "@/modules/coins/routes/coinsModuleRoutes";
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [

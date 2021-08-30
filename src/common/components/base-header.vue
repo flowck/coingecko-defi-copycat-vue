@@ -8,9 +8,27 @@
 
     <nav class="header__links">
       <ul>
-        <li><a href="">About</a></li>
-        <li><a href="">Documentation</a></li>
-        <li><a href="">Gitlab</a></li>
+        <li>
+          <a
+            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/blob/develop/README.md"
+          >
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/tree/develop/docs"
+          >
+            Documentation
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue"
+          >
+            Gitlab
+          </a>
+        </li>
       </ul>
     </nav>
   </header>

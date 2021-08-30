@@ -1,0 +1,24 @@
+[
+  {
+    "index": 0,
+    "id": "uniswap",
+    "name": "Uniswap",
+    "image": "https://assets.coingecko.com/coins/images/12504/large/uniswap-uni.png?1600306604",
+    "symbol": "uni",
+    "price": 26.12,
+    "marketCapitalization": 13600653907,
+    "marketCapitalizationRanking": 11,
+    "fullyDilutedMarketCap": 26162278766
+  },
+  {
+    "index": 1,
+    "id": "terra-luna",
+    "name": "Terra",
+    "image": "https://assets.coingecko.com/coins/images/8284/large/luna1557227471663.png?1567147072",
+    "symbol": "luna",
+    "price": 33.08,
+    "marketCapitalization": 13314028295,
+    "marketCapitalizationRanking": 12,
+    "fullyDilutedMarketCap": null
+  }
+]
