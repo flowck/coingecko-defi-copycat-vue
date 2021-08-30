@@ -49,6 +49,7 @@ export default defineComponent({
 
     &__title {
       color: $color-title;
+      margin-bottom: 20px;
       font-family: "Lato-Bold";
     }
   }
