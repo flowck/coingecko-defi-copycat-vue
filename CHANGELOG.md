@@ -1,3 +1,12 @@
+## [1.0.1](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/compare/v1.0.0...v1.0.1) (2021-08-30)
+
+
+### Bug Fixes
+
+* disable commitlint rules ([c3045cf](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/commit/c3045cfaaaa9ac2fe62d27841c8af6b1374200c4))
+* disable dependencies ([c2ac275](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/commit/c2ac275afda8d1b3db46e0640253a716da0dfac3))
+* move token to the root ([1a45bd8](https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/commit/1a45bd82054694ff718426344d2408fd6b51d537))
+
 # 1.0.0 (2021-08-30)
 
 
