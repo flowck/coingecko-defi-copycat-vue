@@ -73,6 +73,8 @@ create-release:
   before_script:
     - apk --no-cache add git
     - npm i @semantic-release/changelog @semantic-release/git @semantic-release/gitlab
+    - npx husky install
+    - npx husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'
   script: npx semantic-release
   only:
     refs:
