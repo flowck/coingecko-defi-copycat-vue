@@ -14,5 +14,11 @@
 
 - ✅ CI - Gitlab CI
 - ✅ Commit linter - [Commitlint](https://commitlint.js.org/#/)
-- ✅ Semantic releases - [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
+- ✅ Semantic releasesa and auto-versioning (semver) - [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
 - ✅ Static code analysis - [Sonarqube](https://sonarqube.changani.me/dashboard?id=firmino.changani_coingecko-defi-copycat-vue_AXuXrej-158ljRfCr3o9)
+- ⚠️ Lighthouse analysis
+
+## Environments
+
+- Production [main] - https://coingecko-defi-copycat-vue.changani.me
+- Staging [develop] - https://dev.coingecko-defi-copycat-vue.changani.me
