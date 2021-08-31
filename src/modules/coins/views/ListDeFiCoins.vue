@@ -19,7 +19,7 @@
         :data="coins"
         key-value="id"
         key-label="name"
-        @change="onCoinChange"
+        @onChange="onCoinChange"
       />
 
       <data-select
@@ -27,7 +27,7 @@
         key-label="name"
         :data="historicalData"
         v-if="historicalData.length"
-        @change="onHistoricalDataCategoryChange"
+        @onChange="onHistoricalDataCategoryChange"
       />
     </div>
 

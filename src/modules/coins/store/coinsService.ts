@@ -7,8 +7,9 @@ import {
 } from "./interfaces";
 import axios from "axios";
 import { Coin } from "./coin";
+import { Service } from "@/common/utils/service";
 
-export class CoinsService {
+export class CoinsService extends Service {
   private readonly KEY_COINS = "cg.coins";
   private readonly KEY_VS_CURRENCIES = "cg.vsCurrencies";
   private readonly KEY_HISTORICAL_DATA = "cg.historicalData";
@@ -84,14 +85,6 @@ export class CoinsService {
     this.setCache(this.KEY_VS_CURRENCIES, currencies);
 
     return currencies;
-  }
-
-  private getCached(key: string): string | null {
-    return window.localStorage.getItem(key);
-  }
-
-  private setCache<T>(key: string, data: T): void {
-    window.localStorage.setItem(key, JSON.stringify(data));
   }
 
   private mapCoinsResponse(coins: CoinResponse[]): Coin[] {
