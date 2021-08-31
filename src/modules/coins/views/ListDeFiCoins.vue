@@ -9,10 +9,10 @@
       <data-select
         label="Coins"
         :data="coins"
+        key-value="id"
         key-label="name"
-        key-value="index"
         @change="onCoinChange"
-      ></data-select>
+      />
 
       <data-select
         label="Category"
@@ -20,8 +20,7 @@
         :data="historicalData"
         v-if="historicalData.length"
         @change="onHistoricalDataCategoryChange"
-      >
-      </data-select>
+      />
     </div>
 
     <time-series-chart
@@ -58,7 +57,7 @@ export default defineComponent({
       "getCoinHistoricalData",
     ]),
     onCoinChange({ target }: InputEvent) {
-      const value = (target as HTMLInputElement).value;
+      const { value } = target as HTMLInputElement;
       this.getCoinHistoricalData(value);
     },
     onHistoricalDataCategoryChange(event: Event) {
