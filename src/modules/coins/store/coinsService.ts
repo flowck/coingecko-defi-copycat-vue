@@ -1,16 +1,42 @@
+import {
+  CoinResponse,
+  HistoricalData,
+  GetCoinsByMarketCapParams,
+  CoinHistoricalDataResponse,
+} from "./interfaces";
 import axios from "axios";
 import { Coin } from "./coin";
-import { CoinResponse } from "./interfaces";
 import { AppError } from "@/common/utils/appError";
 
-export interface GetCoinsByMarketCapParams {
-  page?: number;
-  perPage?: number;
-  category: string;
-  vsCurrency: string;
-}
-
 export class CoinsService {
+  async getCoinHistoricalData(
+    id: string,
+    vsCurrency: string,
+    days = 30
+  ): Promise<HistoricalData[]> {
+    const key = `cg.historicalData.${id}.${vsCurrency}`;
+    const cached = this.getCached(key);
+
+    if (cached) {
+      return JSON.parse(cached);
+    }
+
+    const { data } = await axios.get<CoinHistoricalDataResponse>(
+      `/coins/${id}/market_chart`,
+      { params: { vs_currency: vsCurrency, days } }
+    );
+
+    const historicalData = [
+      { name: "Prices", data: data.prices },
+      { name: "Market Cap.", data: data.market_caps },
+      { name: "Total volumes", data: data.total_volumes },
+    ];
+
+    this.setCache(key, historicalData);
+
+    return historicalData;
+  }
+
   async getCoinsByMarketCap({
     page,
     perPage,
@@ -21,7 +47,6 @@ export class CoinsService {
       const cached = this.getCached("cg.coins");
 
       if (cached) {
-        console.log(JSON.stringify(JSON.parse(cached).splice(0, 2)));
         return JSON.parse(cached);
       }
 
@@ -38,7 +63,6 @@ export class CoinsService {
 
       return coins;
     } catch (error) {
-      console.log(error);
       throw new AppError(error);
     }
   }
