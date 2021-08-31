@@ -5,9 +5,9 @@
     </label>
     <select
       name="data-select"
+      @change="onChange"
       class="data-select__list"
       :id="`data-select-${Date.now()}`"
-      @change="$emit('change', $event)"
     >
       <option
         :key="index"
@@ -34,6 +34,11 @@ export default defineComponent({
     keyLabel: { type: String },
     keyValue: { type: String },
     data: { type: Object as PropType<unknown[]>, required: true },
+  },
+  methods: {
+    onChange(event: Event) {
+      this.$emit("onChange", (event.target as HTMLSelectElement).value);
+    },
   },
 });
 </script>

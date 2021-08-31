@@ -7,6 +7,14 @@
 
     <div class="view__chart-control">
       <data-select
+        key-value="name"
+        key-label="label"
+        label="Currencies"
+        :data="vsCurrencies"
+        @onChange="onCurrencyChange"
+      />
+
+      <data-select
         label="Coins"
         :data="coins"
         key-value="id"
@@ -49,26 +57,31 @@ export default defineComponent({
   },
   computed: {
     ...mapGetters(COINS_MODULE, ["vsCurrency"]),
-    ...mapState(COINS_MODULE, ["coins", "historicalData"]),
+    ...mapState(COINS_MODULE, ["coins", "historicalData", "vsCurrencies"]),
   },
   methods: {
     ...mapActions(COINS_MODULE, [
-      "getDeFiCoinsByMarketCap",
+      "setVsCurrency",
+      "getVsCurrencies",
       "getCoinHistoricalData",
+      "getDeFiCoinsByMarketCap",
     ]),
-    onCoinChange({ target }: InputEvent) {
-      const { value } = target as HTMLInputElement;
-      this.getCoinHistoricalData(value);
+    onCoinChange(coin: string) {
+      this.getCoinHistoricalData(coin);
     },
-    onHistoricalDataCategoryChange(event: Event) {
-      this.historicalDataCategoryIndex = Number(
-        (event.target as HTMLInputElement).value
-      );
+    onHistoricalDataCategoryChange(categoryIndex: number) {
+      this.historicalDataCategoryIndex = categoryIndex;
+    },
+    async onCurrencyChange(currency: string) {
+      this.setVsCurrency(currency);
+      await this.getDeFiCoinsByMarketCap();
+      await this.getCoinHistoricalData(this.coins[0].id);
     },
   },
   async created() {
     await this.getDeFiCoinsByMarketCap();
     await this.getCoinHistoricalData(this.coins[0].id);
+    await this.getVsCurrencies();
   },
 });
 </script>

@@ -1,10 +1,16 @@
 import { Coin } from "./coin";
 import { AppError } from "@/common/utils/appError";
 
+export interface Currency {
+  name: string;
+  label: string;
+}
+
 export interface CoinsModuleState {
   coins: Coin[];
   vsCurrency: string;
   error: AppError | null;
+  vsCurrencies: Array<string>;
   historicalData: HistoricalData[];
 }
 
