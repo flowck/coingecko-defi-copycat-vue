@@ -1,17 +1,20 @@
+import { version } from "../package.json";
 import { createStore, Store } from "vuex";
 import { coinsModule } from "@/modules/coins/store/coinsModule";
+import { exchangesModule } from "./modules/exchanges/store/exchanges.module";
+
+export const SET_ERROR = "SET_ERROR";
 
 export interface RootState {
-  appName: string;
+  app: { name: string; version: string };
 }
 
 export const store: Store<RootState> = createStore({
   state: {
-    appName: "CoinGecko",
+    app: { name: "CoinGecko", version },
   },
-  mutations: {},
-  actions: {},
   modules: {
     coinsModule,
+    exchangesModule,
   },
 });
