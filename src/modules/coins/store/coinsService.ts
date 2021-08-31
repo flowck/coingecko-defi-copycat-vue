@@ -1,4 +1,5 @@
 import {
+  Currency,
   CoinResponse,
   HistoricalData,
   GetCoinsByMarketCapParams,
@@ -6,15 +7,18 @@ import {
 } from "./interfaces";
 import axios from "axios";
 import { Coin } from "./coin";
-import { AppError } from "@/common/utils/appError";
 
 export class CoinsService {
+  private readonly KEY_COINS = "cg.coins";
+  private readonly KEY_VS_CURRENCIES = "cg.vsCurrencies";
+  private readonly KEY_HISTORICAL_DATA = "cg.historicalData";
+
   async getCoinHistoricalData(
     id: string,
     vsCurrency: string,
     days = 30
   ): Promise<HistoricalData[]> {
-    const key = `cg.historicalData.${id}.${vsCurrency}`;
+    const key = `${this.KEY_HISTORICAL_DATA}.${id}.${vsCurrency}`;
     const cached = this.getCached(key);
 
     if (cached) {
@@ -43,28 +47,43 @@ export class CoinsService {
     vsCurrency,
     category,
   }: GetCoinsByMarketCapParams): Promise<Coin[]> {
-    try {
-      const cached = this.getCached("cg.coins");
+    const cached = this.getCached(this.KEY_COINS);
 
-      if (cached) {
-        return JSON.parse(cached);
-      }
-
-      const { data } = await axios.get("/coins/markets", {
-        params: {
-          category,
-          page: page || 1,
-          per_page: perPage || 10,
-          vs_currency: vsCurrency || "usd",
-        },
-      });
-      const coins = this.mapCoinsResponse(data);
-      this.setCache("cg.coins", coins);
-
-      return coins;
-    } catch (error) {
-      throw new AppError(error);
+    if (cached) {
+      return JSON.parse(cached);
     }
+
+    const { data } = await axios.get("/coins/markets", {
+      params: {
+        category,
+        page: page || 1,
+        per_page: perPage || 10,
+        vs_currency: vsCurrency || "usd",
+      },
+    });
+    const coins = this.mapCoinsResponse(data);
+    this.setCache(this.KEY_COINS, coins);
+
+    return coins;
+  }
+
+  async getSupportedCurrencies(): Promise<Currency[]> {
+    const url = "/simple/supported_vs_currencies";
+    const cached = this.getCached(this.KEY_VS_CURRENCIES);
+
+    if (cached) {
+      return JSON.parse(cached);
+    }
+
+    const { data } = await axios.get<string[]>(url);
+    const currencies = data.map((currency) => ({
+      name: currency,
+      label: currency.toLocaleUpperCase(),
+    }));
+
+    this.setCache(this.KEY_VS_CURRENCIES, currencies);
+
+    return currencies;
   }
 
   private getCached(key: string): string | null {

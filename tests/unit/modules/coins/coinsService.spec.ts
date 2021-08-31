@@ -26,4 +26,21 @@ describe("CoinsService.ts", () => {
       expect(typeof coin.name).toBe("string");
     });
   });
+
+  it("Expects getSupportedCurrencies() to return a list of currencies", async () => {
+    const currencies = await coinsService.getSupportedCurrencies();
+
+    currencies.forEach((currency) => {
+      expect(typeof currency.name).toBe("string");
+      expect(typeof currency.label).toBe("string");
+    });
+  });
+
+  it("Expects getSupportedCurrencies() to cache results", async () => {
+    await coinsService.getSupportedCurrencies();
+
+    expect(typeof window.localStorage.getItem("cg.vsCurrencies")).toBe(
+      "string"
+    );
+  });
 });
