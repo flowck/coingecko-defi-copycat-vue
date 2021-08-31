@@ -10,8 +10,9 @@
 - [Requirements](./docs/setup.md)
 - [Architecture](./docs/setup.md)
 
-## Project features
+## Project setup
 
-- CI
-- Commit lint
-- Semantic releases
+- ✅ CI - Gitlab CI
+- ✅ Commit linter - [Commitlint](https://commitlint.js.org/#/)
+- ✅ Semantic releases - [semantic-release](https://semantic-release.gitbook.io/semantic-release/)
+- ✅ Static code analysis - [Sonarqube](https://sonarqube.changani.me/dashboard?id=firmino.changani_coingecko-defi-copycat-vue_AXuXrej-158ljRfCr3o9)

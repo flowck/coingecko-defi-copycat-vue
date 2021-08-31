@@ -6,8 +6,14 @@ module.exports = {
     "@semantic-release/changelog",
     "@semantic-release/npm",
     "@semantic-release/git",
-    "@semantic-release/gitlab",
+    [
+      "@semantic-release/gitlab",
+      {
+        gitlabUrl: "https://gitlab.com",
+        gitlabApiPathPrefix: "/api/v4",
+      },
+    ],
   ],
   repositoryUrl:
-    "https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue",
+    "https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue.git",
 };
