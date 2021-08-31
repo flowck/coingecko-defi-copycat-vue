@@ -1,13 +1,12 @@
 import { Module } from "vuex";
 import { Coin } from "./coin";
-import { RootState } from "@/store";
 import { CoinsService } from "./coinsService";
-import { CoinsModuleState, HistoricalData } from "./interfaces";
+import { RootState, SET_ERROR } from "@/store";
 import { AppError } from "@/common/utils/appError";
+import { CoinsModuleState, HistoricalData } from "./interfaces";
 
 const coinsService = new CoinsService();
 
-const SET_ERROR = "SET_ERROR";
 const SET_COINS = "SET_COINS";
 const SET_VS_CURRENCY = "SET_VS_CURRENCY";
 const SET_VS_CURRENCIES = "SET_VS_CURRENCIES";

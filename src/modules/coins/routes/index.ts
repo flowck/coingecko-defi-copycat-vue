@@ -3,7 +3,7 @@ import ListDeFiCoins from "@/modules/coins/views/ListDeFiCoins.vue";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "de-fi-coins",
+    path: "coins",
     name: "ListDeFiCoins",
     component: ListDeFiCoins,
     meta: {
