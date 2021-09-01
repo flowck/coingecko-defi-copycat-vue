@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Chart } from "highcharts-vue";
 import { defineComponent, PropType } from "vue";
-import { HistoricalData } from "@/modules/coins/store/interfaces";
+import { HistoricalData } from "@/modules/coins/store/coins.interfaces";
 
 export default defineComponent({
   components: {

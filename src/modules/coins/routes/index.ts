@@ -1,13 +1,22 @@
 import { RouteRecordRaw } from "vue-router";
-import ListDeFiCoins from "@/modules/coins/views/ListDeFiCoins.vue";
+import CoinsListAll from "@/modules/coins/views/coins-list-all.vue";
+import CoinsSingleDetails from "@/modules/coins/views/coins-single-details.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "coins",
-    name: "ListDeFiCoins",
-    component: ListDeFiCoins,
+    name: "CoinsListAll",
+    component: CoinsListAll,
     meta: {
       viewTitle: "Top 100 DeFi Coins by Market Capitalization",
+    },
+  },
+  {
+    path: "coins/:coinId",
+    name: "CoinsSingleDetails",
+    component: CoinsSingleDetails,
+    meta: {
+      viewTitle: "",
     },
   },
 ];

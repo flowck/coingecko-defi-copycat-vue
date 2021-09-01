@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { COINS_MODULE } from "../store/coinsModule";
+import { COINS_MODULE } from "../store/coins.module";
 import CoinsList from "../components/coins-list.vue";
 import { mapActions, mapGetters, mapState } from "vuex";
 import DataSelect from "@/common/components/data-select/data-select.vue";

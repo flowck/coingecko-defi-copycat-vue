@@ -4,7 +4,7 @@ import {
   HistoricalData,
   GetCoinsByMarketCapParams,
   CoinHistoricalDataResponse,
-} from "./interfaces";
+} from "./coins.interfaces";
 import axios from "axios";
 import { Coin } from "./coin";
 import { Service } from "@/common/utils/service";

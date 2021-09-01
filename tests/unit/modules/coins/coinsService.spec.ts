@@ -1,4 +1,4 @@
-import { CoinsService } from "@/modules/coins/store/coinsService";
+import { CoinsService } from "@/modules/coins/store/coins.service";
 
 describe("CoinsService.ts", () => {
   let coinsService: CoinsService;

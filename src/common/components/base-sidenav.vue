@@ -3,7 +3,7 @@
     <nav>
       <ul>
         <li>
-          <router-link :to="{ name: 'ListDeFiCoins' }">DeFi coins</router-link>
+          <router-link :to="{ name: 'CoinsListAll' }">DeFi coins</router-link>
         </li>
         <li>
           <router-link :to="{ name: 'ListExchanges' }">Exchanges</router-link>

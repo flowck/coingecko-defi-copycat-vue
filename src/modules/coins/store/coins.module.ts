@@ -1,9 +1,9 @@
 import { Module } from "vuex";
 import { Coin } from "./coin";
-import { CoinsService } from "./coinsService";
+import { CoinsService } from "./coins.service";
 import { RootState, SET_ERROR } from "@/store";
 import { AppError } from "@/common/utils/appError";
-import { CoinsModuleState, HistoricalData } from "./interfaces";
+import { CoinsModuleState, HistoricalData } from "./coins.interfaces";
 
 const coinsService = new CoinsService();
 
