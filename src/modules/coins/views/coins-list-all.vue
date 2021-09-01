@@ -35,21 +35,21 @@
       v-if="historicalData.length"
       :series="historicalData[historicalDataCategoryIndex]"
     />
-    <coins-list :coins="coins" :vsCurrency="vsCurrency" />
+    <coins-data-table :coins="coins" :vsCurrency="vsCurrency" />
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { COINS_MODULE } from "../store/coins.module";
-import CoinsList from "../components/coins-list.vue";
+import { COINS_MODULE } from "../store/coins.constants";
 import { mapActions, mapGetters, mapState } from "vuex";
+import CoinsDataTable from "../components/coins-data-table.vue";
 import DataSelect from "@/common/components/data-select/data-select.vue";
 import TimeSeriesChart from "@/common/components/time-series-chart/time-series-chart.vue";
 
 export default defineComponent({
   name: "ListDeFiCoins",
-  components: { CoinsList, TimeSeriesChart, DataSelect },
+  components: { CoinsDataTable, TimeSeriesChart, DataSelect },
   data() {
     return {
       historicalDataCategoryIndex: 0,
