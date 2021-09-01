@@ -27,3 +27,59 @@ a {
     font-size: 13px;
   }
 }
+
+// Flex helpers
+.is-flex {
+  display: flex;
+
+  &--vertical-center {
+    align-items: center;
+  }
+
+  &--horizontal-center {
+    justify-content: center;
+  }
+}
+
+// Spacing helpers
+.spacing-top {
+  &--small {
+    margin-top: 10px;
+  }
+
+  &--medium {
+    margin-top: 20px;
+  }
+
+  &--large {
+    margin-top: 40px;
+  }
+}
+
+.spacing-bottom {
+  &--small {
+    margin-bottom: 10px;
+  }
+
+  &--medium {
+    margin-bottom: 20px;
+  }
+
+  &--large {
+    margin-bottom: 40px;
+  }
+}
+
+.spacing-top-bottom {
+  &--small {
+    margin: 10px 0;
+  }
+
+  &--medium {
+    margin: 20px 0;
+  }
+
+  &--large {
+    margin: 40px 0;
+  }
+}

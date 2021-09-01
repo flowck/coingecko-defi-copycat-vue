@@ -14,7 +14,13 @@
             :src="row.image"
             :alt="row.name"
           />
-          <span class="coins-list__name__label">{{ row.name }}</span>
+          <span class="coins-list__name__label">
+            <router-link
+              :to="{ name: 'CoinsSingleDetails', params: { coinId: row.id } }"
+            >
+              {{ row.name }}
+            </router-link>
+          </span>
           <span class="coins-list__name__symbol">{{ row.symbol }}</span>
         </div>
       </data-table-column>

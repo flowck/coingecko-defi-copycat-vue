@@ -3,20 +3,29 @@ import {
   SET_VS_CURRENCY,
   SET_VS_CURRENCIES,
   SET_COIN_HISTORICAL_DATA,
+  SET_COIN,
 } from "./coins.constants";
 import { Module } from "vuex";
 import { Coin } from "./coin";
-import { CoinsService } from "./coins.service";
+import {
+  getCoinHistoricalData,
+  getCoinsByMarketCap,
+  getSingleCoin,
+  getSupportedCurrencies,
+} from "./coins.service";
 import { RootState, SET_ERROR } from "@/store";
 import { AppError } from "@/common/utils/appError";
-import { CoinsModuleState, HistoricalData } from "./coins.interfaces";
-
-const coinsService = new CoinsService();
+import {
+  CoinsModuleState,
+  HistoricalData,
+  CoinResponse,
+} from "./coins.interfaces";
 
 export const coinsModule: Module<CoinsModuleState, RootState> = {
   namespaced: true,
   state: {
     coins: [],
+    coin: null,
     error: null,
     vsCurrency: "USD",
     historicalData: [],
@@ -29,7 +38,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
           vsCurrency: state.vsCurrency,
           category: "decentralized-finance-defi",
         };
-        const coins = await coinsService.getCoinsByMarketCap(params);
+        const coins = await getCoinsByMarketCap(params);
         commit(SET_COINS, coins);
       } catch (error) {
         commit(SET_ERROR, error);
@@ -37,10 +46,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
     },
     async getCoinHistoricalData({ commit, state }, coinId: string) {
       try {
-        const data = await coinsService.getCoinHistoricalData(
-          coinId,
-          state.vsCurrency
-        );
+        const data = await getCoinHistoricalData(coinId, state.vsCurrency);
         commit(SET_COIN_HISTORICAL_DATA, data);
       } catch (error) {
         commit(SET_ERROR, error);
@@ -48,7 +54,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
     },
     async getVsCurrencies({ commit }) {
       try {
-        const currencies = await coinsService.getSupportedCurrencies();
+        const currencies = await getSupportedCurrencies();
         commit(SET_VS_CURRENCIES, currencies);
       } catch (error) {
         commit(SET_ERROR, error);
@@ -57,6 +63,13 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
     async setVsCurrency({ commit }, currency: string) {
       commit(SET_VS_CURRENCY, currency);
     },
+    async getSingleCoin({ commit }, id: string) {
+      const data = await getSingleCoin(id).catch((error) =>
+        commit(SET_ERROR, error)
+      );
+
+      commit(SET_COIN, data);
+    },
   },
   getters: {
     vsCurrency: (state) => state.vsCurrency,
@@ -64,6 +77,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
   mutations: {
     [SET_ERROR]: (state, error: AppError) => (state.error = error),
     [SET_COINS]: (state, coins: Coin[]) => (state.coins = coins),
+    [SET_COIN]: (state, coin: CoinResponse) => (state.coin = coin),
     [SET_VS_CURRENCY]: (state, currency: string) =>
       (state.vsCurrency = currency),
     [SET_VS_CURRENCIES]: (state, currencies: Array<string>) =>
