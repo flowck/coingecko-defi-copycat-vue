@@ -6,31 +6,35 @@
       </router-link>
     </div>
 
-    <nav class="header__links">
-      <ul>
-        <li>
-          <a
-            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/blob/develop/README.md"
-          >
-            About
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/tree/develop/docs"
-          >
-            Documentation
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue"
-          >
-            Gitlab
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <div class="is-flex is-flex--vertical-center">
+      <slot name="currency-selector"></slot>
+
+      <nav class="header__links">
+        <ul>
+          <li>
+            <a
+              href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/blob/develop/README.md"
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue/-/tree/develop/docs"
+            >
+              Documentation
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://gitlab.com/firmino.changani/coingecko-defi-copycat-vue"
+            >
+              Gitlab
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 

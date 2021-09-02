@@ -1,5 +1,9 @@
 <template>
-  <main-header />
+  <main-header>
+    <template v-slot:currency-selector>
+      <currency-selector></currency-selector>
+    </template>
+  </main-header>
   <main class="dashboard">
     <sidenav class="dashboard__sidenav"></sidenav>
     <section class="dashboard__views">
@@ -14,8 +18,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import mainHeader from "../components/main-header/main-header.vue";
 
 export default defineComponent({
+  components: { mainHeader },
   name: "Dashboard",
   computed: {
     viewTitle(): string {
