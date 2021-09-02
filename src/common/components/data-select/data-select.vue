@@ -42,9 +42,11 @@ export default defineComponent({
   },
   computed: {
     getDefaultValue(): string | number {
-      return this.defaultValue || this.data.length
-        ? this.data[0][this.keyValue as string]
-        : "";
+      if (this.defaultValue) {
+        return this.defaultValue;
+      }
+
+      return this.data.length ? this.data[0][this.keyValue as string] : "";
     },
   },
   methods: {
