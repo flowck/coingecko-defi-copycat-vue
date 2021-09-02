@@ -14,6 +14,7 @@
 
     <card class="card spacing-top-bottom--large">
       <time-series-chart
+        :currency="vsCurrency"
         v-if="historicalData.length"
         :series="historicalData[0]"
       />
@@ -60,17 +61,25 @@ export default defineComponent({
         this.vsCurrency
       );
     },
-    marketCapRanking() {
+    marketCapRanking(): string {
       return this.coin ? this.coin.market_data.market_cap_rank : "";
     },
   },
   methods: {
     ...mapActions(COINS_MODULE, ["getSingleCoin", "getCoinHistoricalData"]),
+    async init(): Promise<void> {
+      const { coinId } = this.$route.params;
+      await this.getSingleCoin(coinId);
+      await this.getCoinHistoricalData(coinId);
+    },
+  },
+  watch: {
+    async vsCurrency(): Promise<void> {
+      this.init();
+    },
   },
   async created() {
-    const { coinId } = this.$route.params;
-    await this.getSingleCoin(coinId);
-    await this.getCoinHistoricalData(coinId);
+    this.init();
   },
 });
 </script>
