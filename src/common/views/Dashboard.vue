@@ -1,4 +1,5 @@
 <template>
+  <loading v-show="isLoading" />
   <main-header>
     <template v-slot:currency-selector>
       <currency-selector></currency-selector>
@@ -17,6 +18,7 @@
 </template>
 
 <script lang="ts">
+import { mapState } from "vuex";
 import { defineComponent } from "vue";
 import mainHeader from "../components/main-header/main-header.vue";
 
@@ -24,6 +26,7 @@ export default defineComponent({
   components: { mainHeader },
   name: "Dashboard",
   computed: {
+    ...mapState(["isLoading"]),
     viewTitle(): string {
       return this.$route.meta.viewTitle as string;
     },
