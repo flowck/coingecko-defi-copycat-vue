@@ -10,7 +10,7 @@ import { defineComponent } from "vue";
 
 export interface Stat {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 export default defineComponent({
