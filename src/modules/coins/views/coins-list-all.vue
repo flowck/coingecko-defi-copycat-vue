@@ -5,15 +5,7 @@
       on top of distributed networks with no central intermediaries.
     </p>
 
-    <div class="view__chart-control">
-      <data-select
-        key-value="name"
-        key-label="label"
-        label="Currencies"
-        :data="vsCurrencies"
-        @onChange="onCurrencyChange"
-      />
-
+    <card class="is-flex spacing-top-bottom--medium">
       <data-select
         label="Coins"
         :data="coins"
@@ -30,13 +22,19 @@
         v-if="historicalDataCategories.length"
         @onChange="onHistoricalDataCategoryChange"
       />
-    </div>
+    </card>
 
-    <time-series-chart
-      v-if="historicalData.length"
-      :series="historicalData[historicalDataCategoryIndex]"
-    />
-    <coins-data-table :coins="coins" :vsCurrency="vsCurrency" />
+    <card class="spacing-bottom--medium">
+      <time-series-chart
+        :currency="vsCurrency"
+        v-if="historicalData.length"
+        :series="historicalData[historicalDataCategoryIndex]"
+      />
+    </card>
+
+    <card>
+      <coins-data-table :coins="coins" :vsCurrency="vsCurrency" />
+    </card>
   </section>
 </template>
 
@@ -60,8 +58,6 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(COINS_MODULE, [
-      "setVsCurrency",
-      "getVsCurrencies",
       "getCoinHistoricalData",
       "getDeFiCoinsByMarketCap",
     ]),
@@ -71,16 +67,18 @@ export default defineComponent({
     onHistoricalDataCategoryChange(categoryIndex: number) {
       this.historicalDataCategoryIndex = categoryIndex;
     },
-    async onCurrencyChange(currency: string) {
-      this.setVsCurrency(currency);
+    async init(): Promise<void> {
       await this.getDeFiCoinsByMarketCap();
       await this.getCoinHistoricalData(this.coins[0].id);
     },
   },
+  watch: {
+    async vsCurrency() {
+      this.init();
+    },
+  },
   async created() {
-    await this.getDeFiCoinsByMarketCap();
-    await this.getCoinHistoricalData(this.coins[0].id);
-    await this.getVsCurrencies();
+    this.init();
   },
 });
 </script>
