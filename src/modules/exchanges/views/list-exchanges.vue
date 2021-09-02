@@ -53,7 +53,9 @@ export default defineComponent({
     };
   },
   async created() {
+    this.$isLoading(true);
     await this.getExchanges({ page: 1, perPage: 50 });
+    this.$isLoading(false);
   },
 });
 </script>

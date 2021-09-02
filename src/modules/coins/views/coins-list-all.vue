@@ -61,15 +61,19 @@ export default defineComponent({
       "getCoinHistoricalData",
       "getDeFiCoinsByMarketCap",
     ]),
-    onCoinChange(coin: string) {
-      this.getCoinHistoricalData(coin);
+    async onCoinChange(coin: string): Promise<void> {
+      this.$isLoading(true);
+      await this.getCoinHistoricalData(coin);
+      this.$isLoading(false);
     },
     onHistoricalDataCategoryChange(categoryIndex: number) {
       this.historicalDataCategoryIndex = categoryIndex;
     },
     async init(): Promise<void> {
+      this.$isLoading(true);
       await this.getDeFiCoinsByMarketCap();
       await this.getCoinHistoricalData(this.coins[0].id);
+      this.$isLoading(false);
     },
   },
   watch: {

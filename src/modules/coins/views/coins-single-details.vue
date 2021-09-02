@@ -68,9 +68,11 @@ export default defineComponent({
   methods: {
     ...mapActions(COINS_MODULE, ["getSingleCoin", "getCoinHistoricalData"]),
     async init(): Promise<void> {
+      this.$isLoading(true);
       const { coinId } = this.$route.params;
       await this.getSingleCoin(coinId);
       await this.getCoinHistoricalData(coinId);
+      this.$isLoading(false);
     },
   },
   watch: {

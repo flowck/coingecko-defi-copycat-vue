@@ -1,0 +1,21 @@
+.loading {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 900;
+  position: absolute;
+  background-color: $color-gecko;
+
+  animation: isLoading infinite 0.5s;
+}
+
+@keyframes isLoading {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
