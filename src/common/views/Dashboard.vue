@@ -1,7 +1,12 @@
 <template>
-  <base-header />
+  <loading v-show="isLoading" />
+  <main-header>
+    <template v-slot:currency-selector>
+      <currency-selector></currency-selector>
+    </template>
+  </main-header>
   <main class="dashboard">
-    <base-sidenav class="dashboard__sidenav"></base-sidenav>
+    <sidenav class="dashboard__sidenav"></sidenav>
     <section class="dashboard__views">
       <!-- VIEW TITLE -->
       <h1 class="dashboard__views__title" v-if="viewTitle">{{ viewTitle }}</h1>
@@ -13,14 +18,15 @@
 </template>
 
 <script lang="ts">
+import { mapState } from "vuex";
 import { defineComponent } from "vue";
-import BaseHeader from "@/common/components/base-header.vue";
-import BaseSidenav from "@/common/components/base-sidenav.vue";
+import mainHeader from "../components/main-header/main-header.vue";
 
 export default defineComponent({
+  components: { mainHeader },
   name: "Dashboard",
-  components: { BaseHeader, BaseSidenav },
   computed: {
+    ...mapState(["isLoading"]),
     viewTitle(): string {
       return this.$route.meta.viewTitle as string;
     },

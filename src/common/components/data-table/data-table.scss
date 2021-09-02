@@ -22,8 +22,6 @@
 }
 
 .data-table {
-  $border-color: #dee2e6;
-
   &__table {
     width: 100%;
     border-collapse: collapse;
@@ -32,8 +30,8 @@
       height: 45px;
       tr {
         cursor: pointer;
-        border-top: 1px solid $border-color;
-        border-bottom: 2px solid $border-color;
+        border-top: 1px solid $color-border;
+        border-bottom: 2px solid $color-border;
 
         th {
           color: #4a4a4a;
@@ -68,7 +66,7 @@
         color: #212529;
         max-height: 60px;
         font-size: 0.875rem;
-        border-bottom: 1px solid #dee2e6;
+        border-bottom: 1px solid $color-border;
       }
     }
   }

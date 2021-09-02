@@ -1,0 +1,19 @@
+.data-select {
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+  &__list {
+    min-width: 200px;
+    padding: 8px 5px;
+    border-radius: 3px;
+    background-color: transparent;
+    border: 1px solid $color-border;
+  }
+}

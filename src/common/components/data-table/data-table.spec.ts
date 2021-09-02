@@ -1,5 +1,5 @@
-import rows from "../../fixtures/rows.json";
 import { shallowMount } from "@vue/test-utils";
+import rows from "../../../../tests/fixtures/rows.json";
 import DataTable from "@/common/components/data-table/data-table.vue";
 
 describe("DataTable.vue", () => {

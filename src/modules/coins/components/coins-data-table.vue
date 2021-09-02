@@ -14,7 +14,13 @@
             :src="row.image"
             :alt="row.name"
           />
-          <span class="coins-list__name__label">{{ row.name }}</span>
+          <span class="coins-list__name__label">
+            <router-link
+              :to="{ name: 'CoinsSingleDetails', params: { coinId: row.id } }"
+            >
+              {{ row.name }}
+            </router-link>
+          </span>
           <span class="coins-list__name__symbol">{{ row.symbol }}</span>
         </div>
       </data-table-column>
@@ -37,8 +43,7 @@
 <script lang="ts">
 import { Coin } from "../store/coin";
 import { defineComponent, PropType } from "vue";
-import DataTable from "@/common/components/data-table/data-table.vue";
-import DataTableColumn from "@/common/components/data-table/data-table-column.vue";
+import { numberToCurrency } from "@/common/utils/currency";
 
 export default defineComponent({
   props: {
@@ -48,7 +53,6 @@ export default defineComponent({
     },
     vsCurrency: { type: String, required: true },
   },
-  components: { DataTable, DataTableColumn },
   data() {
     return {
       columns: [
@@ -62,14 +66,7 @@ export default defineComponent({
   },
   methods: {
     numberToCurrency(value: number): string {
-      if (!value) {
-        return "?";
-      }
-
-      return value.toLocaleString(undefined, {
-        style: "currency",
-        currency: this.vsCurrency,
-      });
+      return value ? numberToCurrency(value, this.vsCurrency) : "?";
     },
   },
 });
@@ -77,8 +74,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .coins-list {
-  margin-top: 50px;
-
   &__name {
     display: flex;
     align-items: center;

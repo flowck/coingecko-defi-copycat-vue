@@ -1,0 +1,16 @@
+.stat {
+  padding: 10px;
+  border-radius: 4px;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  &__value {
+    font-size: 1.25rem;
+    font-weight: normal;
+    margin-bottom: 2px;
+  }
+
+  &__label {
+    font-size: 0.875rem;
+  }
+}

@@ -1,4 +1,4 @@
-import { CoinImage, CoinResponse } from "./interfaces";
+import { CoinImage, CoinResponse } from "./coins.interfaces";
 
 export class Coin {
   id!: string;

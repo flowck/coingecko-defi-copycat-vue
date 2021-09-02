@@ -1,8 +1,8 @@
 <template>
-  <article class="stat">
+  <card class="stat">
     <h1 class="stat__value">{{ value }}</h1>
     <span class="stat__label" v-if="label">{{ label }}</span>
-  </article>
+  </card>
 </template>
 
 <script lang="ts">
@@ -10,7 +10,7 @@ import { defineComponent } from "vue";
 
 export interface Stat {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 export default defineComponent({
@@ -21,22 +21,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.stat {
-  padding: 10px;
-  border-radius: 4px;
-  overflow-y: hidden;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  &__value {
-    font-size: 1.25rem;
-    font-weight: normal;
-    margin-bottom: 2px;
-  }
-
-  &__label {
-    font-size: 0.875rem;
-  }
-}
-</style>
+<style lang="scss" scoped src="./stat-card.scss"></style>
