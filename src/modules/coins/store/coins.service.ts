@@ -48,7 +48,8 @@ export async function getCoinsByMarketCap({
   vsCurrency,
   category,
 }: GetCoinsByMarketCapParams): Promise<Coin[]> {
-  const cached = getCached<Coin[]>(KEY_COINS);
+  const key = `${KEY_COINS}.${vsCurrency}`;
+  const cached = getCached<Coin[]>(key);
 
   if (cached) {
     return cached;
@@ -63,7 +64,7 @@ export async function getCoinsByMarketCap({
     },
   });
   const coins = mapCoinsResponse(data);
-  setCache(KEY_COINS, coins);
+  setCache(key, coins);
 
   return coins;
 }
