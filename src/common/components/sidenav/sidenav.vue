@@ -32,29 +32,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.sidenav {
-  ul li {
-    width: 100%;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-    a {
-      display: block;
-      padding: 12px 10px;
-
-      &.router-link-exact-active {
-        color: $color-gecko;
-      }
-    }
-  }
-
-  &__version {
-    width: 100%;
-    bottom: 70px;
-    font-size: 13px;
-    position: absolute;
-    text-align: center;
-  }
-}
-</style>
+<style lang="scss" scoped src="./sidenav.scss"></style>

@@ -6,13 +6,14 @@
     <select
       name="data-select"
       @change="onChange"
+      :value="getDefaultValue"
       class="data-select__list"
       :id="`data-select-${Date.now()}`"
     >
       <option
         :key="index"
+        :value="item[keyValue]"
         v-for="(item, index) in data"
-        :value="item[keyValue] || index"
       >
         {{ item[keyLabel] }}
       </option>
@@ -33,7 +34,18 @@ export default defineComponent({
     label: { type: String },
     keyLabel: { type: String },
     keyValue: { type: String },
-    data: { type: Object as PropType<unknown[]>, required: true },
+    defaultValue: { type: String },
+    data: {
+      type: Object as PropType<Record<string, string | number>[]>,
+      required: true,
+    },
+  },
+  computed: {
+    getDefaultValue(): string | number {
+      return this.defaultValue || this.data.length
+        ? this.data[0][this.keyValue as string]
+        : "";
+    },
   },
   methods: {
     onChange(event: Event) {

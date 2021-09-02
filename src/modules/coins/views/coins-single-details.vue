@@ -7,9 +7,9 @@
     </div>
 
     <div class="coin__stats spacing-top--large" v-if="coin">
-      <base-stat label="Current price" :value="currentPrice" />
-      <base-stat label="Market cap" :value="marketCap" />
-      <base-stat label="Market cap ranking" :value="marketCapRanking" />
+      <stat-card label="Current price" :value="currentPrice" />
+      <stat-card label="Market cap" :value="marketCap" />
+      <stat-card label="Market cap ranking" :value="marketCapRanking" />
     </div>
 
     <div class="card spacing-top-bottom--large">
@@ -34,18 +34,21 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import { COINS_MODULE } from "../store/coins.constants";
-import BaseStat from "@/common/components/base-stat.vue";
 import { numberToCurrency } from "@/common/utils/currency";
-import TimeSeriesChart from "@/common/components/time-series-chart/time-series-chart.vue";
 
 export default defineComponent({
-  components: { TimeSeriesChart, BaseStat },
+  components: {},
   computed: {
     ...mapState(COINS_MODULE, ["coin", "historicalData", "vsCurrency"]),
     currentPrice(): string {
-      return this.coin
-        ? this.coin.market_data.current_price[this.vsCurrency.toLowerCase()]
-        : "";
+      if (!this.coin) {
+        return "";
+      }
+
+      return numberToCurrency(
+        this.coin.market_data.current_price[this.vsCurrency.toLowerCase()],
+        this.vsCurrency
+      );
     },
     marketCap(): string {
       if (!this.coin) {

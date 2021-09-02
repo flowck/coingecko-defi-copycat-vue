@@ -1,7 +1,7 @@
 <template>
-  <base-header />
+  <main-header />
   <main class="dashboard">
-    <base-sidenav class="dashboard__sidenav"></base-sidenav>
+    <sidenav class="dashboard__sidenav"></sidenav>
     <section class="dashboard__views">
       <!-- VIEW TITLE -->
       <h1 class="dashboard__views__title" v-if="viewTitle">{{ viewTitle }}</h1>
@@ -14,12 +14,9 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import BaseHeader from "@/common/components/base-header.vue";
-import BaseSidenav from "@/common/components/base-sidenav.vue";
 
 export default defineComponent({
   name: "Dashboard",
-  components: { BaseHeader, BaseSidenav },
   computed: {
     viewTitle(): string {
       return this.$route.meta.viewTitle as string;

@@ -1,5 +1,5 @@
+import BaseStat from "./stat-card.vue";
 import { shallowMount } from "@vue/test-utils";
-import BaseStat from "@/common/components/base-stat.vue";
 
 describe("base-stat.vue", () => {
   it("Should not render the label element in the absence of label property", () => {

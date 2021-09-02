@@ -73,6 +73,12 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
   },
   getters: {
     vsCurrency: (state) => state.vsCurrency,
+    historicalDataCategories(state) {
+      return state.historicalData.map((item, index) => ({
+        value: index,
+        name: item.name,
+      }));
+    },
   },
   mutations: {
     [SET_ERROR]: (state, error: AppError) => (state.error = error),

@@ -21,22 +21,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.stat {
-  padding: 10px;
-  border-radius: 4px;
-  overflow-y: hidden;
-  white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-  &__value {
-    font-size: 1.25rem;
-    font-weight: normal;
-    margin-bottom: 2px;
-  }
-
-  &__label {
-    font-size: 0.875rem;
-  }
-}
-</style>
+<style lang="scss" scoped src="./stat-card.scss"></style>

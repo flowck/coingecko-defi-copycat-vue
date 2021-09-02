@@ -25,8 +25,9 @@
       <data-select
         label="Category"
         key-label="name"
-        :data="historicalData"
-        v-if="historicalData.length"
+        key-value="value"
+        :data="historicalDataCategories"
+        v-if="historicalDataCategories.length"
         @onChange="onHistoricalDataCategoryChange"
       />
     </div>
@@ -44,19 +45,17 @@ import { defineComponent } from "vue";
 import { COINS_MODULE } from "../store/coins.constants";
 import { mapActions, mapGetters, mapState } from "vuex";
 import CoinsDataTable from "../components/coins-data-table.vue";
-import DataSelect from "@/common/components/data-select/data-select.vue";
-import TimeSeriesChart from "@/common/components/time-series-chart/time-series-chart.vue";
 
 export default defineComponent({
   name: "ListDeFiCoins",
-  components: { CoinsDataTable, TimeSeriesChart, DataSelect },
+  components: { CoinsDataTable },
   data() {
     return {
       historicalDataCategoryIndex: 0,
     };
   },
   computed: {
-    ...mapGetters(COINS_MODULE, ["vsCurrency"]),
+    ...mapGetters(COINS_MODULE, ["vsCurrency", "historicalDataCategories"]),
     ...mapState(COINS_MODULE, ["coins", "historicalData", "vsCurrencies"]),
   },
   methods: {

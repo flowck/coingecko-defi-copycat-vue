@@ -4,4 +4,9 @@ module.exports = {
     "^.+\\.vue$": "vue-jest",
   },
   collectCoverage: true,
+  testMatch: [
+    "**/tests/unit/**/*.spec.[jt]s?(x)",
+    "**/__tests__/*.[jt]s?(x)",
+    "**/src/**/*.spec.[jt]s?(x)",
+  ],
 };

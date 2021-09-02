@@ -43,8 +43,6 @@
 <script lang="ts">
 import { Coin } from "../store/coin";
 import { defineComponent, PropType } from "vue";
-import DataTable from "@/common/components/data-table/data-table.vue";
-import DataTableColumn from "@/common/components/data-table/data-table-column.vue";
 
 export default defineComponent({
   props: {
@@ -54,7 +52,6 @@ export default defineComponent({
     },
     vsCurrency: { type: String, required: true },
   },
-  components: { DataTable, DataTableColumn },
   data() {
     return {
       columns: [
