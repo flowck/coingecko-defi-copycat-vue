@@ -8,9 +8,9 @@ import {
 import { Module } from "vuex";
 import { Coin } from "./coin";
 import {
-  getCoinHistoricalData,
-  getCoinsByMarketCap,
   getSingleCoin,
+  getCoinsByMarketCap,
+  getCoinHistoricalData,
   getSupportedCurrencies,
 } from "./coins.service";
 import { RootState, SET_ERROR } from "@/store";
@@ -27,7 +27,7 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
     coins: [],
     coin: null,
     error: null,
-    vsCurrency: "USD",
+    vsCurrency: "usd",
     historicalData: [],
     vsCurrencies: new Array<string>(),
   },
@@ -69,6 +69,9 @@ export const coinsModule: Module<CoinsModuleState, RootState> = {
       );
 
       commit(SET_COIN, data);
+    },
+    async onCurrencyChange({ dispatch }, currency: string) {
+      dispatch("setVsCurrency", currency);
     },
   },
   getters: {
