@@ -1,14 +1,11 @@
-import { CoinsService } from "@/modules/coins/store/coins.service";
+import {
+  getCoinsByMarketCap,
+  getSupportedCurrencies,
+} from "@/modules/coins/store/coins.service";
 
-describe("CoinsService.ts", () => {
-  let coinsService: CoinsService;
-
-  beforeAll(() => {
-    coinsService = new CoinsService();
-  });
-
+describe("coins.service.ts", () => {
   it("Expects getCoinsByMarketCap() to return a list", async () => {
-    const coins = await coinsService.getCoinsByMarketCap({
+    const coins = await getCoinsByMarketCap({
       vsCurrency: "usd",
       category: "decentralized-finance-defi",
     });
@@ -16,7 +13,7 @@ describe("CoinsService.ts", () => {
   });
 
   it("Expects getCoinsByMarketCap() to return a list of valid coins", async () => {
-    const coins = await coinsService.getCoinsByMarketCap({
+    const coins = await getCoinsByMarketCap({
       vsCurrency: "usd",
       category: "decentralized-finance-defi",
     });
@@ -28,7 +25,7 @@ describe("CoinsService.ts", () => {
   });
 
   it("Expects getSupportedCurrencies() to return a list of currencies", async () => {
-    const currencies = await coinsService.getSupportedCurrencies();
+    const currencies = await getSupportedCurrencies();
 
     currencies.forEach((currency) => {
       expect(typeof currency.name).toBe("string");
@@ -37,7 +34,7 @@ describe("CoinsService.ts", () => {
   });
 
   it("Expects getSupportedCurrencies() to cache results", async () => {
-    await coinsService.getSupportedCurrencies();
+    await getSupportedCurrencies();
 
     expect(typeof window.localStorage.getItem("cg.vsCurrencies")).toBe(
       "string"
