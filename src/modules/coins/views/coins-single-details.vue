@@ -76,12 +76,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.card {
-  padding: 15px;
-  border-radius: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .coin {
   &__stats {
     display: grid;
