@@ -1,25 +1,25 @@
 <template>
   <section class="view">
-    <p class="view__description"></p>
+    <card>
+      <data-table
+        class="exchanges"
+        v-slot="{ row }"
+        v-if="exchanges"
+        :rows="exchanges"
+        :columns="[nameColumn, ...columns]"
+      >
+        <data-table-column>
+          <div class="exchanges__column-container">
+            <img class="exchanges__logo" :src="row.image" :alt="row.name" />
+            {{ row.name }}
+          </div>
+        </data-table-column>
 
-    <data-table
-      class="exchanges"
-      v-slot="{ row }"
-      v-if="exchanges"
-      :rows="exchanges"
-      :columns="[nameColumn, ...columns]"
-    >
-      <data-table-column>
-        <div class="exchanges__column-container">
-          <img class="exchanges__logo" :src="row.image" :alt="row.name" />
-          {{ row.name }}
-        </div>
-      </data-table-column>
-
-      <data-table-column v-for="column in columns" :key="column.name">{{
-        row[column.name]
-      }}</data-table-column>
-    </data-table>
+        <data-table-column v-for="column in columns" :key="column.name">
+          {{ row[column.name] }}
+        </data-table-column>
+      </data-table>
+    </card>
   </section>
 </template>
 
@@ -27,11 +27,8 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import { EXCHANGES_MODULE } from "../store/exchanges.module";
-import DataTable from "@/common/components/data-table/data-table.vue";
-import DataTableColumn from "@/common/components/data-table/data-table-column.vue";
 
 export default defineComponent({
-  components: { DataTable, DataTableColumn },
   computed: {
     ...mapState(EXCHANGES_MODULE, ["exchanges"]),
   },

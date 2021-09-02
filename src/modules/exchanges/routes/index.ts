@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import ListExchanges from "@/modules/exchanges/views/ListExchanges.vue";
+import ListExchanges from "@/modules/exchanges/views/list-exchanges.vue";
 
 const routes: RouteRecordRaw[] = [
   {
