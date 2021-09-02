@@ -43,6 +43,7 @@
 <script lang="ts">
 import { Coin } from "../store/coin";
 import { defineComponent, PropType } from "vue";
+import { numberToCurrency } from "@/common/utils/currency";
 
 export default defineComponent({
   props: {
@@ -65,14 +66,7 @@ export default defineComponent({
   },
   methods: {
     numberToCurrency(value: number): string {
-      if (!value) {
-        return "?";
-      }
-
-      return value.toLocaleString(undefined, {
-        style: "currency",
-        currency: this.vsCurrency,
-      });
+      return value ? numberToCurrency(value, this.vsCurrency) : "?";
     },
   },
 });
@@ -80,8 +74,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .coins-list {
-  margin-top: 50px;
-
   &__name {
     display: flex;
     align-items: center;
