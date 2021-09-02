@@ -5,7 +5,7 @@
       on top of distributed networks with no central intermediaries.
     </p>
 
-    <card class="is-flex spacing-top-bottom--medium">
+    <card class="is-flex spacing-top-bottom--large">
       <data-select
         label="Coins"
         :data="coins"
@@ -24,7 +24,7 @@
       />
     </card>
 
-    <card class="spacing-bottom--medium">
+    <card class="spacing-bottom--large">
       <time-series-chart
         :currency="vsCurrency"
         v-if="historicalData.length"
