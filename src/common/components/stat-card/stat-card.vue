@@ -1,8 +1,8 @@
 <template>
-  <article class="stat">
+  <card class="stat">
     <h1 class="stat__value">{{ value }}</h1>
     <span class="stat__label" v-if="label">{{ label }}</span>
-  </article>
+  </card>
 </template>
 
 <script lang="ts">

@@ -12,19 +12,19 @@
       <stat-card label="Market cap ranking" :value="marketCapRanking" />
     </div>
 
-    <div class="card spacing-top-bottom--large">
+    <card class="card spacing-top-bottom--large">
       <time-series-chart
         v-if="historicalData.length"
         :series="historicalData[0]"
       />
-    </div>
+    </card>
 
     <!-- ABOUT -->
-    <article class="card coin__about" v-if="coin && coin.description.en">
+    <card class="coin__about" v-if="coin && coin.description.en">
       <h1>About {{ coin.name }}</h1>
 
       <div v-html="coin.description.en"></div>
-    </article>
+    </card>
 
     <!-- STATS -->
   </section>
